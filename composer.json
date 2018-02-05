@@ -1,7 +1,7 @@
 
 {
   "name":"oneup/contao-sentry-bundle",
-  "description":"This bundle connects a Contao installation with sentry.io.",
+  "description":"This bundle provides an easy integration of sentry.io for Contao 4.4.x and newer.",
   "keywords":["contao", "sentry", "error", "tracking", "raven"],
   "type":"contao-bundle",
   "homepage":"https://github.com/1up-lab/contao-sentry-bundle",
