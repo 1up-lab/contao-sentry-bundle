@@ -1,0 +1,50 @@
+
+{
+  "name":"oneup/contao-sentry-bundle",
+  "description":"This bundle connects a Contao installation with sentry.io.",
+  "keywords":["contao", "sentry", "error", "tracking", "raven"],
+  "type":"contao-bundle",
+  "homepage":"http://1up.io",
+  "license":"MIT",
+  "authors":[
+    {
+      "name":"David Greminger",
+      "email":"dg@1up.io",
+      "homepage":"https://github.com/1up-lab/contao-sentry-bundle",
+      "role":"Developer"
+    }
+  ],
+  "support":{
+    "email":"hello@1up.io",
+    "issues":"https://github.com/1up-lab/contao-sentry-bundle/issues",
+    "irc":"irc://irc.freenode.org/contao.dev",
+    "source":"https://github.com/1up-lab/contao-sentry-bundle"
+  },
+  "require":{
+    "php":">=7.1",
+    "contao/core-bundle":"^4.4",
+    "sentry/sentry-symfony": "2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.5",
+    "contao/manager-plugin": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Oneup\\Contao\\SentryBundle\\": "src"
+    },
+    "exclude-from-classmap": [
+      "/tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Oneup\\Contao\\SentryBundle\\": "/tests/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Oneup\\Contao\\SentryBundle\\ContaoManager\\Plugin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
