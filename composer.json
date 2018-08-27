@@ -1,37 +1,43 @@
-
 {
-  "name":"oneup/contao-sentry-bundle",
-  "description":"This bundle provides an easy integration of sentry.io for Contao 4.4.x and newer.",
-  "keywords":["contao", "sentry", "error", "tracking", "raven"],
-  "type":"contao-bundle",
-  "homepage":"https://github.com/1up-lab/contao-sentry-bundle",
-  "license":"MIT",
-  "authors":[
+  "name": "oneup/contao-sentry-bundle",
+  "type": "contao-bundle",
+  "description": "This bundle provides an easy integration of sentry.io for Contao 4.4.x and newer.",
+  "keywords": [
+    "contao",
+    "sentry",
+    "error",
+    "tracking",
+    "raven"
+  ],
+  "homepage": "https://github.com/1up-lab/contao-sentry-bundle",
+  "license": "MIT",
+  "authors": [
     {
-      "name":"David Greminger",
-      "email":"dg@1up.io",
-      "homepage":"https://github.com/bytehead",
-      "role":"Developer"
+      "name": "David Greminger",
+      "email": "dg@1up.io",
+      "homepage": "https://github.com/bytehead",
+      "role": "Developer"
     }
   ],
-  "support":{
-    "email":"hello@1up.io",
-    "issues":"https://github.com/1up-lab/contao-sentry-bundle/issues",
-    "irc":"irc://irc.freenode.org/contao.dev",
-    "source":"https://github.com/1up-lab/contao-sentry-bundle"
-  },
-  "require":{
-    "php":">=7.1",
-    "contao/core-bundle":"^4.4",
+  "require": {
+    "php": ">=7.1",
+    "contao/core-bundle": "^4.4",
     "sentry/sentry-symfony": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~6.5",
     "contao/manager-plugin": "^2.0",
-    "sentry/sentry": "^0.9",
+    "friendsofphp/php-cs-fixer": "^2.13",
+    "phpunit/phpunit": "~6.5",
+    "sentry/sentry": "^1.0",
     "symfony/config": "^3.3 || ^4.0",
     "symfony/dependency-injection": "^3.3 || ^4.0",
     "twig/twig": "^2.4"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "contao-manager-plugin": "Oneup\\Contao\\SentryBundle\\ContaoManager\\Plugin"
   },
   "autoload": {
     "psr-4": {
@@ -46,9 +52,12 @@
       "Oneup\\Contao\\SentryBundle\\": "/tests/"
     }
   },
-  "extra": {
-    "contao-manager-plugin": "Oneup\\Contao\\SentryBundle\\ContaoManager\\Plugin"
-  },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "support": {
+    "email": "hello@1up.io",
+    "issues": "https://github.com/1up-lab/contao-sentry-bundle/issues",
+    "irc": "irc://irc.freenode.org/contao.dev",
+    "source": "https://github.com/1up-lab/contao-sentry-bundle"
+  }
 }

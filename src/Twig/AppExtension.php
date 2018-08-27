@@ -10,7 +10,6 @@ use Twig_SimpleFilter;
 
 class AppExtension extends Twig_Extension
 {
-
     /**
      * Returns a list of filters to add to the existing list.
      *

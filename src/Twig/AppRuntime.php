@@ -40,6 +40,6 @@ class AppRuntime
      */
     public function sentryDsn(): string
     {
-        return sprintf('https://' . $this->client->public_key . '@sentry.io/' . $this->client->project);
+        return sprintf('https://'.$this->client->public_key.'@sentry.io/'.$this->client->project);
     }
 }
