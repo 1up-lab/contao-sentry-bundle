@@ -23,11 +23,15 @@
   "require":{
     "php":">=7.1",
     "contao/core-bundle":"^4.4",
-    "sentry/sentry-symfony": "2.0"
+    "sentry/sentry-symfony": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.5",
-    "contao/manager-plugin": "^2.0"
+    "contao/manager-plugin": "^2.0",
+    "sentry/sentry": "^0.9",
+    "symfony/config": "^3.3 || ^4.0",
+    "symfony/dependency-injection": "^3.3 || ^4.0",
+    "twig/twig": "^2.4"
   },
   "autoload": {
     "psr-4": {
