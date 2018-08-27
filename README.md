@@ -25,18 +25,16 @@ In order to integrate this feature, you have to alter the error page template. P
 Modify the copied template and place the following snippet just before the closing `</body>` tag:
 ```twig
     {% set sentry_id = ''|sentry_last_event_id %}
-    <script src="https://cdn.ravenjs.com/3.23.1/raven.min.js"></script>
     {% if sentry_id %}
+        <script src="https://cdn.ravenjs.com/3.23.1/raven.min.js"></script>
         <script>
             Raven.showReportDialog({
                 eventId: '{{ sentry_id }}',
-                dsn: 'https://12345678@sentry.io/1'
+                dsn: '{{ ''|sentry_dsn }}'
             });
         </script>
     {% endif %}
 ```
-
-Mind to replace the `dsn` with its actual value.
 
 ![User Feedback in action][4]
 

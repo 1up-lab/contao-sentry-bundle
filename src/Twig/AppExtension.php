@@ -20,6 +20,7 @@ class AppExtension extends Twig_Extension
     {
         return [
             new Twig_SimpleFilter('sentry_last_event_id', [AppRuntime::class, 'sentryLastEventIdFilter']),
+            new Twig_SimpleFilter('sentry_dsn', [AppRuntime::class, 'sentryDsn']),
         ];
     }
 }

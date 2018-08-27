@@ -32,4 +32,14 @@ class AppRuntime
     {
         return $this->client->getLastEventID();
     }
+
+    /**
+     * Return the Sentry DSN. The DSN gets disassembled in the Raven_Client, so we build it here again.
+     *
+     * @return string
+     */
+    public function sentryDsn(): string
+    {
+        return sprintf('https://' . $this->client->public_key . '@sentry.io/' . $this->client->project);
+    }
 }
