@@ -22,7 +22,7 @@
   "require": {
     "php": ">=7.1",
     "contao/core-bundle": "^4.4",
-    "sentry/sentry-symfony": "^2.0"
+    "sentry/sentry-symfony": "^2.1"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
