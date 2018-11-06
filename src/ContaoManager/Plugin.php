@@ -33,7 +33,7 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface, DependentP
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig): void
     {
         // load default config from SentryBundle
-        $loader->load('@SentryBundle/Resources/config/services.yml');
+        $loader->load('@SentryBundle/Resources/config/services.xml');
     }
 
     public function getPackageDependencies(): array
