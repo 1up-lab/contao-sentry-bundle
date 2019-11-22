@@ -24,16 +24,22 @@ In order to integrate this feature, you have to alter the error page template. P
 
 Modify the copied template and place the following snippet just before the closing `</body>` tag:
 ```twig
-    {% set sentry_id = ''|sentry_last_event_id %}
-    {% if sentry_id %}
-        <script src="https://cdn.ravenjs.com/3.23.1/raven.min.js"></script>
-        <script>
-            Raven.showReportDialog({
-                eventId: '{{ sentry_id }}',
-                dsn: '{{ ''|sentry_dsn }}'
-            });
-        </script>
-    {% endif %}
+{% set sentry_id = ''|sentry_last_event_id %}
+{% if sentry_id %}
+    <script src="https://browser.sentry-cdn.com/5.7.1/bundle.min.js"
+            integrity="sha384-KMv6bBTABABhv0NI+rVWly6PIRvdippFEgjpKyxUcpEmDWZTkDOiueL5xW+cztZZ"
+            crossorigin="anonymous"></script>
+    <script>
+        Sentry.init({dsn: '{{ ''|sentry_dsn }}'});
+        Sentry.showReportDialog({eventId: '{{ sentry_id }}'})
+
+        // You can also bind the "show" method to an event, e.g. to open the modal on button click
+        {#document.querySelector('.btn-report').addEventListener('click', function (e) {#}
+        {#    e.preventDefault();#}
+        {#    Sentry.showReportDialog({eventId: '{{ sentry_id }}'})#}
+        {#});#}
+    </script>
+{% endif %}
 ```
 
 ![User Feedback in action][4]
