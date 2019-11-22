@@ -22,7 +22,7 @@
   "require": {
     "php": ">=7.1",
     "contao/core-bundle": "^4.4",
-    "sentry/sentry-symfony": "^2.1"
+    "sentry/sentry-symfony": "^3.2"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
@@ -42,18 +42,8 @@
   "autoload": {
     "psr-4": {
       "Oneup\\Contao\\SentryBundle\\": "src"
-    },
-    "exclude-from-classmap": [
-      "/tests/"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Oneup\\Contao\\SentryBundle\\": "/tests/"
     }
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "support": {
     "email": "hello@1up.io",
     "issues": "https://github.com/1up-lab/contao-sentry-bundle/issues",
