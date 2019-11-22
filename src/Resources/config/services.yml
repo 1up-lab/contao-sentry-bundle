@@ -1,12 +1,9 @@
 services:
-    oneup.contao_sentry.twig_extension:
-        class: Oneup\Contao\SentryBundle\Twig\AppExtension
+    Oneup\Contao\SentryBundle\Twig\ContaoSentryTwigExtension:
         tags:
             - { name: twig.extension }
 
-    oneup.contao_sentry.twig_runtime:
-        class: Oneup\Contao\SentryBundle\Twig\AppRuntime
+    Oneup\Contao\SentryBundle\Twig\ContaoSentryTwigRuntime:
         public: false
-        arguments: ['@sentry.client']
         tags:
             - { name: twig.runtime }
