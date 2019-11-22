@@ -6,7 +6,7 @@ namespace Oneup\Contao\SentryBundle\Twig;
 
 use Raven_Client;
 
-class AppRuntime
+class ContaoSentryTwigRuntime
 {
     /**
      * @var Raven_Client
