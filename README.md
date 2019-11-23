@@ -12,6 +12,27 @@ This Contao bundle provides an easy integration of [sentry.io](https://sentry.io
 In the first place, this is an "wrapper extension" for the [`sentry/sentry-symfony` bundle][1]. Therefore, you need to
 configure this bundle as you would configure the `sentry/sentry-symfony` bundle: [Documentation][2]
 
+### Recommended configuration
+
+If you also want to report the system log errors to Sentry, this is the recommended configuration:
+
+```yml
+sentry:
+  dsn: "https://xyz@sentry.io/xy"
+  register_error_listener: false
+  monolog:
+    error_handler:
+      enabled: true
+      level: error # Can be one of https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#log-levels, but System::log() only uses INFO or ERROR
+monolog:
+  handlers:
+    sentry:
+      type: service
+      id: Sentry\Monolog\Handler
+      priority: 100 # Higher priority than ContaoTableHandler which will stop handling afterwards (bubbling is set to true)
+      bubble: false # Use bubble: true if you don't want the logs to show up in the system log (bubbling means, no monolog handlers will run afterwards)
+```
+
 ### User feedback
 
 On the other hand you might want to implement the [User feedback][3] feature of sentry. The user feedback is primarily
