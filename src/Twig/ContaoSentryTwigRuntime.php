@@ -16,9 +16,15 @@ class ContaoSentryTwigRuntime
     public function sentryDsn(): ?string
     {
         if (null !== $client = SentryBundle::getCurrentHub()->getClient()) {
-            $options = $client->getOptions();
+            $dsn = $client->getOptions()->getDsn(false);
 
-            return sprintf('https://%s@sentry.io/%s', $options->getPublicKey(), $options->getProjectId());
+            return sprintf(
+                '%s://%s@%s/%s',
+                $dsn->getScheme(),
+                $dsn->getPublicKey(),
+                $dsn->getHost(),
+                $dsn->getProjectId()
+            );
         }
 
         return null;
