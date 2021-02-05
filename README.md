@@ -67,6 +67,6 @@ Modify the copied template and place the following snippet just before the closi
 
 
 [1]: https://github.com/getsentry/sentry-symfony/
-[2]: https://github.com/getsentry/sentry-symfony/#step-3-configure-the-sdk
+[2]: https://github.com/getsentry/sentry-symfony/#configuration-of-the-sdk
 [3]: https://docs.sentry.io/learn/user-feedback/
 [4]: https://user-images.githubusercontent.com/1284725/41782120-a06637f0-7639-11e8-96d7-a053e7ddd232.png
