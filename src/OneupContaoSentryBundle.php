@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Oneup\Contao\SentryBundle;
 
-use Sentry\SentryBundle\SentryBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OneupContaoSentryBundle extends SentryBundle
+class OneupContaoSentryBundle extends Bundle
 {
 }
