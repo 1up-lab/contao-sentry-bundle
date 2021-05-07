@@ -20,10 +20,13 @@ If you also want to report the system log errors to Sentry, this is the recommen
 sentry:
   dsn: "https://xyz@sentry.io/xy"
   register_error_listener: false
-  monolog:
-    error_handler:
-      enabled: true
-      level: error # Can be one of https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#log-levels, but System::log() only uses INFO or ERROR
+  
+Sentry\Monolog\Handler:
+    arguments:
+        $hub: '@Sentry\State\HubInterface'
+        $level: !php/const Monolog\Logger::ERROR
+        $bubble: false
+
 monolog:
   handlers:
     sentry:
