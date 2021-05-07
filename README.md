@@ -24,7 +24,7 @@ sentry:
 Sentry\Monolog\Handler:
     arguments:
         $hub: '@Sentry\State\HubInterface'
-        $level: !php/const Monolog\Logger::ERROR
+        $level: !php/const Monolog\Logger::ERROR # Can be one of https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#log-levels, but System::log() only uses INFO or ERROR
         $bubble: false
 
 monolog:
