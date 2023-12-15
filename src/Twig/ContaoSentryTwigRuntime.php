@@ -10,7 +10,11 @@ class ContaoSentryTwigRuntime
 {
     public function sentryLastEventIdFilter(): ?string
     {
-        return SentrySdk::getCurrentHub()->getLastEventId();
+        $lastEventId = SentrySdk::getCurrentHub()->getLastEventId();
+        if ($lastEventId === null) {
+            return null;
+        }
+        return (string) $lastEventId;
     }
 
     public function sentryDsn(): ?string
