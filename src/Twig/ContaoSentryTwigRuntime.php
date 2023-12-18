@@ -15,6 +15,7 @@ class ContaoSentryTwigRuntime
         if ($lastEventId === null) {
             return null;
         }
+
         return (string) $lastEventId;
     }
 
