@@ -1,7 +1,7 @@
 Contao Sentry Bundle
 ====================
 
-This Contao bundle provides an easy integration of [sentry.io](https://sentry.io/) for Contao 4.4.x and newer.
+This Contao bundle provides an easy integration of [sentry.io](https://sentry.io/) for Contao 4.13 and 5.x.
 
 [![Author](http://img.shields.io/badge/author-@1upgmbh-blue.svg?style=flat-square)](https://twitter.com/1upgmbh)
 [![Software License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -9,7 +9,7 @@ This Contao bundle provides an easy integration of [sentry.io](https://sentry.io
 
 --
 
-In the first place, this is an "wrapper extension" for the [`sentry/sentry-symfony` bundle][1]. Therefore, you need to
+In the first place, this is a "wrapper extension" for the [`sentry/sentry-symfony` bundle][1]. Therefore, you need to
 configure this bundle as you would configure the `sentry/sentry-symfony` bundle: [Documentation][2]
 
 ### Recommended configuration
@@ -44,7 +44,7 @@ some comments.
 
 In order to integrate this feature, you have to alter the error page template. Place a copy of 
 `vendor/contao/core-bundle/src/Resources/views/Error/layout.html.twig` in the directory 
-`app/Resources/ContaoCoreBundle/views/Error/`.
+`templates/ContaoCoreBundle/views/Error/`.
 
 Modify the copied template and place the following snippet just before the closing `</body>` tag:
 ```twig
