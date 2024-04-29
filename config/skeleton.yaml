@@ -1,6 +1,6 @@
 parameters:
-    '%env(SENTRY_DSN)%': ''
-    '%env(SENTRY_ENV)%': '%kernel.environment%'
+    env(SENTRY_DSN): ''
+    env(SENTRY_ENV): '%kernel.environment%'
 
 sentry:
     dsn: '%env(SENTRY_DSN)%'
