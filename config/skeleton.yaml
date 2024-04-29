@@ -1,0 +1,39 @@
+parameters:
+    '%env(SENTRY_DSN)%': ''
+    '%env(SENTRY_ENV)%': '%kernel.environment%'
+
+sentry:
+    dsn: '%env(SENTRY_DSN)%'
+    register_error_listener: false
+    register_error_handler: false
+    options:
+        environment: "%env(SENTRY_ENV)%"
+        before_send: Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration
+        ignore_exceptions:
+            - Contao\CoreBundle\Exception\AccessDeniedException
+            - Contao\CoreBundle\Exception\AjaxRedirectResponseException
+            - Contao\CoreBundle\Exception\InsufficientAuthenticationException
+            - Contao\CoreBundle\Exception\InvalidRequestTokenException
+            - Contao\CoreBundle\Exception\NoActivePageFoundException
+            - Contao\CoreBundle\Exception\NoContentResponseException
+            - Contao\CoreBundle\Exception\PageNotFoundException
+            - Contao\CoreBundle\Exception\RedirectResponseException
+            - Contao\CoreBundle\Exception\ResponseException
+            - Contao\CoreBundle\Exception\ServiceUnavailableException
+            - Contao\UnusedArgumentsException
+            - Symfony\Component\Console\Exception\CommandNotFoundException
+            - Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
+            - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+            - Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
+            - Symfony\Component\Security\Core\Exception\AccessDeniedException
+
+monolog:
+    handlers:
+        sentry:
+            type: sentry
+            level: !php/const Monolog\Logger::ERROR
+            hub_id: Sentry\State\HubInterface
+
+services:
+    Monolog\Processor\PsrLogMessageProcessor:
+        tags: { name: monolog.processor, handler: sentry }

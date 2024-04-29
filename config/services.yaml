@@ -7,3 +7,5 @@ services:
         public: false
         tags:
             - { name: twig.runtime }
+
+    Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration: ~
