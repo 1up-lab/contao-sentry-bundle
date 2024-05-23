@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Oneup\Contao\SentryBundle\Twig;
+namespace Oneup\ContaoSentryBundle\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

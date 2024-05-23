@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Oneup\Contao\SentryBundle\Twig;
+namespace Oneup\ContaoSentryBundle\Twig;
 
 use Sentry\SentrySdk;
 
@@ -22,15 +22,9 @@ class ContaoSentryTwigRuntime
     public function sentryDsn(): ?string
     {
         if ((null !== $client = SentrySdk::getCurrentHub()->getClient())
-            && (null !== $dsn = $client->getOptions()->getDsn())) {
-
-            return sprintf(
-                '%s://%s@%s/%s',
-                $dsn->getScheme(),
-                $dsn->getPublicKey(),
-                $dsn->getHost(),
-                $dsn->getProjectId()
-            );
+            && (null !== $dsn = $client->getOptions()->getDsn())
+        ) {
+            return (string) $dsn;
         }
 
         return null;

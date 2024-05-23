@@ -1,9 +1,0 @@
-services:
-    Oneup\Contao\SentryBundle\Twig\ContaoSentryTwigExtension:
-        tags:
-            - { name: twig.extension }
-
-    Oneup\Contao\SentryBundle\Twig\ContaoSentryTwigRuntime:
-        public: false
-        tags:
-            - { name: twig.runtime }

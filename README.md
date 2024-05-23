@@ -1,7 +1,7 @@
 Contao Sentry Bundle
 ====================
 
-This Contao bundle provides an easy integration of [sentry.io](https://sentry.io/) for Contao 4.4.x and newer.
+This Contao bundle provides an easy integration of [sentry.io](https://sentry.io/) for Contao 4.13 and 5.x.
 
 [![Author](http://img.shields.io/badge/author-@1upgmbh-blue.svg?style=flat-square)](https://twitter.com/1upgmbh)
 [![Software License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -9,32 +9,26 @@ This Contao bundle provides an easy integration of [sentry.io](https://sentry.io
 
 --
 
-In the first place, this is an "wrapper extension" for the [`sentry/sentry-symfony` bundle][1]. Therefore, you need to
-configure this bundle as you would configure the `sentry/sentry-symfony` bundle: [Documentation][2]
+This is a "wrapper extension" for the [`sentry/sentry-symfony` bundle][1].
 
-### Recommended configuration
 
-If you also want to report the system log errors to Sentry, this is the recommended configuration:
+### Setup in the Contao Managed Edition
 
-```yml
-sentry:
-  dsn: "https://xyz@sentry.io/xy"
-  register_error_listener: false
-  
-Sentry\Monolog\Handler:
-    arguments:
-        $hub: '@Sentry\State\HubInterface'
-        $level: !php/const Monolog\Logger::ERROR # Can be one of https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#log-levels, but System::log() only uses INFO or ERROR
-        $bubble: false
+The basic integration is automatically configured to some sane defaults. To enable
+the integration, configure the `SENTRY_DSN` variable in your `.env.local` file.
 
-monolog:
-  handlers:
-    sentry:
-      type: service
-      id: Sentry\Monolog\Handler
-      priority: 100 # Higher priority than ContaoTableHandler which will stop handling afterwards (bubbling is set to true)
-      bubble: false # Use bubble: true if you don't want the logs to show up in the system log (bubbling means, no monolog handlers will run afterwards)
-```
+Additionally, you can name the `SENTRY_ENV` in your `.env.local` file, which can be useful
+if you e.g. have a `test` and `prod` installation.
+
+If you need to change any of the defaults, simply configure 
+the `sentry/sentry-symfony` bundle according to the [Documentation][2].
+
+
+### Manual configuration
+
+If you do not use the Contao Managed Edition, you need to configure this bundle as you would 
+configure the `sentry/sentry-symfony` bundle: [Documentation][2]
+
 
 ### User feedback
 
@@ -44,7 +38,7 @@ some comments.
 
 In order to integrate this feature, you have to alter the error page template. Place a copy of 
 `vendor/contao/core-bundle/src/Resources/views/Error/layout.html.twig` in the directory 
-`app/Resources/ContaoCoreBundle/views/Error/`.
+`templates/ContaoCoreBundle/views/Error/`.
 
 Modify the copied template and place the following snippet just before the closing `</body>` tag:
 ```twig
@@ -70,6 +64,6 @@ Modify the copied template and place the following snippet just before the closi
 
 
 [1]: https://github.com/getsentry/sentry-symfony/
-[2]: https://github.com/getsentry/sentry-symfony/#configuration-of-the-sdk
+[2]: https://docs.sentry.io/platforms/php/guides/symfony/#install
 [3]: https://docs.sentry.io/learn/user-feedback/
 [4]: https://user-images.githubusercontent.com/1284725/41782120-a06637f0-7639-11e8-96d7-a053e7ddd232.png
