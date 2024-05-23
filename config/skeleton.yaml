@@ -8,7 +8,7 @@ sentry:
     register_error_handler: false
     options:
         environment: "%env(SENTRY_ENV)%"
-        before_send: Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration
+        before_send: oneup_contao_sentry.integration.ignore_previous_exceptions
         ignore_exceptions:
             - Contao\CoreBundle\Exception\AccessDeniedException
             - Contao\CoreBundle\Exception\AjaxRedirectResponseException

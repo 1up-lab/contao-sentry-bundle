@@ -1,11 +1,14 @@
 services:
-    Oneup\ContaoSentryBundle\Twig\ContaoSentryTwigExtension:
+    oneup_contao_sentry.twig.extension:
+        class: Oneup\ContaoSentryBundle\Twig\ContaoSentryTwigExtension
         tags:
             - { name: twig.extension }
 
-    Oneup\ContaoSentryBundle\Twig\ContaoSentryTwigRuntime:
+    oneup_contao_sentry.twig.runtime:
+        class: Oneup\ContaoSentryBundle\Twig\ContaoSentryTwigRuntime
         public: false
         tags:
             - { name: twig.runtime }
 
-    Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration: ~
+    oneup_contao_sentry.integration.ignore_previous_exceptions:
+        class: Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration
