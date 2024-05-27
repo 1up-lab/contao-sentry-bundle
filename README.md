@@ -30,7 +30,7 @@ If you do not use the Contao Managed Edition, you need to configure this bundle 
 configure the `sentry/sentry-symfony` bundle: [Documentation][2]
 
 
-### User feedback
+## User feedback
 
 On the other hand you might want to implement the [User feedback][3] feature of sentry. The user feedback is primarily
 useful to let the users know that you've gotten notified about the issue and to let users give the opportunity to add
@@ -63,7 +63,24 @@ Modify the copied template and place the following snippet just before the closi
 ![User Feedback in action][4]
 
 
+## Error tracking helper
+
+The `Oneup\ContaoSentryBundle\ErrorHandlingTrait` adds useful Sentry helpers.
+
+- `ErrorHandlingTrait::sentryOrThrow` will either log an error/exception to sentry,
+  or it will throw an exception if Sentry integration is not available (e.g. on localhost
+  or in `dev` environment). It is mostly useful when running looping cronjobs, like
+  synchronizing Contao with a remote system, so an error on syncing a record will not prevent
+  the sync loop from finishing other records.
+
+- `ErrorHandlingTraig::sentryCheckIn` has been added for the new [Sentry Cron job monitoring][5].
+  Call `sentryCheckIn()` without argument to start a check in, and subsequently with a boolean
+  `true` or `false` after the job has successfully run or failed.
+
+
+
 [1]: https://github.com/getsentry/sentry-symfony/
 [2]: https://docs.sentry.io/platforms/php/guides/symfony/#install
 [3]: https://docs.sentry.io/learn/user-feedback/
 [4]: https://user-images.githubusercontent.com/1284725/41782120-a06637f0-7639-11e8-96d7-a053e7ddd232.png
+[5]: https://docs.sentry.io/product/crons/
