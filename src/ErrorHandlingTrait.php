@@ -31,7 +31,7 @@ trait ErrorHandlingTrait
     private function sentryCheckIn(bool $success = null): void
     {
         $checkIn = new CheckIn(
-            monitorSlug: substr(__CLASS__, strrpos(__CLASS__, '\\')+1),
+            monitorSlug: substr(__CLASS__, strrpos(__CLASS__, '\\') + 1),
             status: match($success) {
                 null => CheckInStatus::inProgress(),
                 true => CheckInStatus::ok(),
