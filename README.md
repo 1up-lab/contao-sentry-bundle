@@ -44,8 +44,8 @@ Modify the copied template and place the following snippet just before the closi
 ```twig
 {% set sentry_id = ''|sentry_last_event_id %}
 {% if sentry_id %}
-    <script src="https://browser.sentry-cdn.com/5.7.1/bundle.min.js"
-            integrity="sha384-KMv6bBTABABhv0NI+rVWly6PIRvdippFEgjpKyxUcpEmDWZTkDOiueL5xW+cztZZ"
+    <script src="https://browser.sentry-cdn.com/8.7.0/bundle.feedback.min.js"
+            integrity="sha384-If5t0OtWMly236c4qvXxYalt8pOLHOj9qKZaXu/xDqMqJ5xmdMCwVwXP6dlPyALI"
             crossorigin="anonymous"></script>
     <script>
         Sentry.init({dsn: '{{ ''|sentry_dsn }}'});
@@ -81,6 +81,6 @@ The `Oneup\ContaoSentryBundle\ErrorHandlingTrait` adds useful Sentry helpers.
 
 [1]: https://github.com/getsentry/sentry-symfony/
 [2]: https://docs.sentry.io/platforms/php/guides/symfony/#install
-[3]: https://docs.sentry.io/learn/user-feedback/
+[3]: https://docs.sentry.io/platforms/javascript/user-feedback/
 [4]: https://user-images.githubusercontent.com/1284725/41782120-a06637f0-7639-11e8-96d7-a053e7ddd232.png
 [5]: https://docs.sentry.io/product/crons/
