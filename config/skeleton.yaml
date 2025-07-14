@@ -23,6 +23,7 @@ sentry:
             - Contao\UnusedArgumentsException
             - Symfony\Component\Console\Exception\CommandNotFoundException
             - Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
+            - Symfony\Component\HttpKernel\Exception\GoneHttpException
             - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
             - Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
             - Symfony\Component\Messenger\Exception\RecoverableMessageHandlingException
