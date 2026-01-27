@@ -10,5 +10,7 @@ services:
         tags:
             - { name: twig.runtime }
 
-    oneup_contao_sentry.integration.ignore_previous_exceptions:
-        class: Oneup\ContaoSentryBundle\Integration\IgnorePreviousExceptionsIntegration
+    oneup_contao_sentry.dispatch_before_send_event_callback:
+        class: Oneup\ContaoSentryBundle\DispatchBeforeSendEventCallback
+        arguments:
+            - '@event_dispatcher'

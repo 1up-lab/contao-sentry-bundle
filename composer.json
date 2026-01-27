@@ -23,6 +23,7 @@
     "php": "^8.1",
     "contao/core-bundle": "^4.13 || ^5.0",
     "sentry/sentry-symfony": "^5.0",
+    "symfony/event-dispatcher-contracts": "^3.6",
     "twig/twig": "^2.7 || ^3.0"
   },
   "require-dev": {

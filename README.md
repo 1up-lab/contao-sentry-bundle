@@ -29,8 +29,48 @@ the `sentry/sentry-symfony` bundle according to the [Documentation][2].
 If you do not use the Contao Managed Edition, you need to configure this bundle as you would 
 configure the `sentry/sentry-symfony` bundle: [Documentation][2]
 
+### Special case `before_send` callback
 
-## User feedback
+In the `sentry/sentry-symfony` bundle, there can only be one service responsible for filtering events before
+sending them to sentry. You'd configure it like so:
+
+```yaml
+sentry:
+    options:
+        before_send: 'my_service_id'
+```
+
+However, this conflicts with the idea of this bundle to be extensible. Hence, this bundle ships with a default
+callback that dispatches the `BeforeSendEvent`. Thus giving other extensions (or your app), the option to filter the
+events before sending, without replacing each other.
+
+Usage:
+
+```php
+use Oneup\ContaoSentryBundle\Event\BeforeSendEvent;
+use Sentry\Event;
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+
+#[AsEventListener]
+class SentryBeforeSendListener
+{
+    public function __invoke(BeforeSendEvent $beforeSendEvent): void
+    {
+        // Might have been unset already by a different listener
+        $event = $beforeSendEvent->getEvent();
+        if (null === $event) {
+            return;
+        }
+
+        // Your custom logic
+        if ($this->shouldEventBeIgnored($event)) {
+            $beforeSendEvent->setEvent(null);
+        }
+    }
+}
+```
+
+### User feedback
 
 On the other hand you might want to implement the [User feedback][3] feature of sentry. The user feedback is primarily
 useful to let the users know that you've gotten notified about the issue and to let users give the opportunity to add
