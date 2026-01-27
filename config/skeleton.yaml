@@ -4,11 +4,14 @@ parameters:
 
 sentry:
     dsn: '%env(SENTRY_DSN)%'
+    # Disable default error handlers and listeners because we capture all issues via
+    # Monolog handler so that we can also capture issues that were only reported via
+    # logger directly
     register_error_listener: false
     register_error_handler: false
     options:
         environment: "%env(SENTRY_ENV)%"
-        before_send: oneup_contao_sentry.integration.ignore_previous_exceptions
+        before_send: oneup_contao_sentry.dispatch_before_send_event_callback
         ignore_exceptions:
             - Contao\CoreBundle\Exception\AccessDeniedException
             - Contao\CoreBundle\Exception\AjaxRedirectResponseException
