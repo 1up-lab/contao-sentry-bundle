@@ -30,6 +30,7 @@ sentry:
             - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
             - Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
             - Symfony\Component\Messenger\Exception\RecoverableMessageHandlingException
+            - Symfony\Component\Routing\Exception\MethodNotAllowedException
             - Symfony\Component\Security\Core\Exception\AccessDeniedException
 
 monolog:
